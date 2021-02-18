@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 module.exports = mongoose.connect('mongodb+srv://rpg:rpg@cluster0.0ddez.mongodb.net/cursoReact?retryWrites=true&w=majority',{ 
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: true
 
 }, () => {
   try {
