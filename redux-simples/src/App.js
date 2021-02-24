@@ -1,19 +1,21 @@
-import Card from './components/Card'
+import React from 'react';
 import './App.css';
+import Intervalo from './components/Intervalo'
+import Soma from './components/Soma'
+import Media from './components/Media'
+import Sorteio from './components/Sorteio'
 
 function App() {
   return (
     <div className="App">
       <h1>Exercício React-redux (simples)</h1>
       <div className="linha">
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
+        <Intervalo></Intervalo>
       </div>
       <div className="linha">
-        <Card></Card>
-        <Card></Card>
-        <Card></Card>
+        <Media></Media>
+        <Soma></Soma>
+        <Sorteio></Sorteio>
       </div>
     </div>
   );
