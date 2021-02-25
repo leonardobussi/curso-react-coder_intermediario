@@ -4,6 +4,7 @@ import "./Intervalo.css"
 
 
 import Card from './Card'
+import { alterarNumeroMinimo, alterarNumeroMaximo } from "../store/actions/numeros"
 
 const Intervalo = (props) => {
   const {min, max} = props
@@ -13,12 +14,14 @@ const Intervalo = (props) => {
       <div className="Intervalo">
         <span>
           <strong>Mínimo</strong>
-          <input type="number" value={min}  readOnly/>
+          <input type="number" value={min}  
+          onChange={e => props.alterarMinimo(+e.target.value)} />
         </span>
 
         <span>
           <strong>Máximo</strong>
-          <input type="number" value={max} readOnly />
+          <input type="number" value={max} 
+          onChange={e => props.alterarMaximo(+e.target.value)} />
         </span>
       </div>
     </Card>
@@ -30,4 +33,18 @@ function mapStateToProps(state){
     max: state.numeros.max
   }
 }
-export default connect(mapStateToProps)(Intervalo)
+
+function mapDispatchToProp(dispatch){
+  return {
+    alterarMinimo(novoNumero){
+      const action = alterarNumeroMinimo(novoNumero)
+      dispatch(action)
+    },
+    alterarMaximo(novoNumero2){
+      const actionMax = alterarNumeroMaximo(novoNumero2)
+      dispatch(actionMax)
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProp)(Intervalo)
